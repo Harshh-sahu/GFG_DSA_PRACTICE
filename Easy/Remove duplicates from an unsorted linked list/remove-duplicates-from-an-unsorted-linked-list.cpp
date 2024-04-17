@@ -43,27 +43,24 @@ class Solution
     //Function to remove duplicates from unsorted linked list.
     Node * removeDuplicates( Node *head) 
     {
-        std::unordered_map<int,int> m;
-        m[head->data]=1;
-        Node *Newhead=new Node(head->data);
-        
-        Node *newptr=Newhead;
-        Node*ptr=head->next;    
-        while(ptr!=NULL)
-        {
-            if(m[ptr->data]==0)
-            {
-                m[ptr->data]=1;
-                Node *newNode= new Node(ptr->data);
-                newptr->next=newNode;
-                newptr=newNode;
-            }
-            else
-            {
-                ptr=ptr->next;
-            }
-        }
-        return Newhead;}
+      if(head->next==NULL) {
+          return head;
+      }
+      map<int,bool>mp;
+      Node* prev = NULL;
+      Node* curr = head;
+      while(curr!=NULL) {
+          if(mp[curr->data]== true) {
+              prev->next = curr->next;
+          }
+          else {
+              prev = curr;
+              mp[curr->data] = true;
+          }
+          curr = curr->next;
+      }
+      return head;
+    }
 };
 
 
