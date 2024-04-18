@@ -1,0 +1,14 @@
+<h2><a href="https://www.geeksforgeeks.org/problems/intersection-of-two-linked-list/1">Intersection of Two Linked Lists</a></h2><h3>Difficulty Level : Easy</h3><hr><div class="problems_problem_content__Xm_eO"><p><span style="font-size: 18px;">Given two linked lists of length n and m, the task is to complete the function <strong>findIntersection(),&nbsp;</strong>which returns the intersection of two linked lists. Each of the two linked lists contains distinct node values.</span></p>
+<p><span style="font-size: 18px;"><strong>Example 1:</strong></span></p>
+<pre><span style="font-size: 18px;">Input:<br>n = 6, m = 4
+LinkedList1: 9-&gt;6-&gt;4-&gt;2-&gt;3-&gt;8
+LinkedList2: 1-&gt;2-&gt;8-&gt;6
+<strong>Output: </strong>6 2 8<br><strong>Explanation: </strong>Nodes 6, 2 and 8 are common in both of the lists and the order will be according toLinkedList1. <br></span></pre>
+<p><span style="font-size: 18px;"><strong>Example 2:</strong></span></p>
+<pre><span style="font-size: 18px;"><strong>Input:</strong><br>n = 5, m = 2
+LinkedList1: 5-&gt;3-&gt;1-&gt;13-&gt;14
+LinkedList2: 3-&gt;13
+<strong>Output: </strong>3 13<br><strong>Explanation: </strong>Nodes 3 and 13 are common in both of the lists and the order will be according toLinkedList1. </span></pre>
+<p><span style="font-size: 18px;"><strong>Your Task:</strong><br>Your task is to complete the function <strong>findIntersection() </strong>which takes the heads of the 2 input linked lists as parameters and returns the head of the intersection list. The returned list will be automatically printed by driver code.<br><strong>Note:</strong> The order of nodes in this list should be the same as the order in which those particular nodes appear in input list 1 and return null if no common element is present.</span></p>
+<p><span style="font-size: 18px;"><strong>Constraints:</strong><br>1 &lt;= n,m&nbsp;&lt;= 10<sup>4<br></sup>1 &lt;= node values &lt;= 10<sup>5</sup><sup><br></sup></span></p>
+<p><span style="font-size: 18px;"><strong>Expected time complexity:</strong>&nbsp;O(m+n)<br><strong>Expected auxiliary space:&nbsp;</strong>O(m+n)</span></p></div><p><span style=font-size:18px><strong>Company Tags : </strong><br><code>VMWare</code>&nbsp;<code>Flipkart</code>&nbsp;<code>Accolite</code>&nbsp;<code>Amazon</code>&nbsp;<code>Microsoft</code>&nbsp;<code>24*7 Innovation Labs</code>&nbsp;<code>D-E-Shaw</code>&nbsp;<code>Walmart</code>&nbsp;<code>Komli Media</code>&nbsp;<code>Taxi4Sure</code>&nbsp;<br><p><span style=font-size:18px><strong>Topic Tags : </strong><br><code>Linked List</code>&nbsp;<code>Hash</code>&nbsp;<code>Sorting</code>&nbsp;<code>Data Structures</code>&nbsp;<code>Algorithms</code>&nbsp;
