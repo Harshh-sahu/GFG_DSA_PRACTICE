@@ -9,23 +9,23 @@ using namespace std;
 //User function Template for C++
 
 class Solution{
-   void solve(stack<int>*st,int x){
-        if(st->empty()){
-            st->push(x);
-            return ;
+public:
+
+        void solve(stack<int>&s ,int &target){
+            if(s.empty()){
+                s.push(target);
+                return;
+            }
+            
+            int topElement = s.top();
+            s.pop();
+            solve(s,target);
+            s.push(topElement);
             
         }
-        
-        int temp = st->top();
-        st->pop();
-        solve(st,x);
-        st->push(temp);
-    }
-public:
-    stack<int> insertAtBottom(stack<int> st,int x){
-          solve(&st,x);
-          return st;
-    }
+    stack<int> insertAtBottom(stack<int> s,int target){
+        solve(s,target);
+        return s;}
 };
 
 //{ Driver Code Starts.
