@@ -141,10 +141,10 @@ class Solution{
         // step 03: reversing the ans linked list
         
         ans = reverseLinkedList(ans);
-        
         while(ans -> data == 0 && ans->next != NULL){
             ans = ans -> next;
         }
+        
         
         return ans;
     }
