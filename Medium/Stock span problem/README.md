@@ -1,0 +1,19 @@
+<h2><a href="https://www.geeksforgeeks.org/problems/stock-span-problem-1587115621/1">Stock span problem</a></h2><h3>Difficulty Level : Medium</h3><hr><div class="problems_problem_content__Xm_eO"><p><span style="font-size: 18px;">The stock span problem is a financial problem where we have a series of <strong>n</strong> daily price quotes for a stock and we need to calculate the span of stocks price for all <strong>n</strong> days.&nbsp;<br>The span <strong>S<sub>i</sub></strong> of the stocks price on a given day <strong>i</strong> is defined as the maximum number of consecutive days just before the given day, for which the price of the stock on the given day is less than or equal to its price on the current day.<br>For example, if an array of 7 days prices is given as {100, 80, 60, 70, 60, 75, 85}, then the span values for corresponding 7 days are {1, 1, 1, 2, 1, 4, 6}.</span></p>
+<p><span style="font-size: 18px;"><strong>Example 1:</strong></span></p>
+<pre><span style="font-size: 18px;"><strong>Input</strong>: 
+N = 7, price[] = [100 80 60 70 60 75 85]
+<strong>Output</strong>:
+1 1 1 2 1 4 6
+<strong>Explanation</strong>:
+Traversing the given input span <br>100 is greater than equal to 100 and there are no more elements behind it so the span is 1,<br>80 is greater than equal to 80 and smaller than 100 so the span is 1,<br>60 is greater than equal to 60 and smaller than 80 so the span is 1,<br>70 is greater than equal to 60,70 and smaller than 80 so the span is 2,<br>60 is greater than equal to 60 and smaller than 70 so the span is 1,<br>75 is greater than equal to 60,70,60,75 and smaller than 100 so the span is 4,<br>85 is greater than equal to 80,60,70,60,75,85 and smaller than 100 so the span is 6. <br>Hence the output will be 1 1 1 2 1 4 6.
+</span></pre>
+<p><span style="font-size: 18px;"><strong>Example 2:</strong></span></p>
+<pre><span style="font-size: 18px;"><strong>Input</strong>: 
+N = 6, price[] = [10 4 5 90 120 80]
+<strong>Output</strong>:
+1 1 2 4 5 1
+<strong>Explanation</strong>:<br>Traversing the given input span <br>10 is greater than equal to 10 and there are no more elements behind it so the span is 1,<br>4 is greater than equal to 4 and smaller than 10 so the span is 1,<br>5 is greater than equal to 4,5 and smaller than 10 so the span is 2,<br>90 is greater than equal to all previous elements so the span is 4,<br>120 is greater than equal to all previous elements so the span is 5,<br>80 is greater than equal to 80 and smaller than 120 so the span is 1,<br></span><span style="font-size: 14pt;">Hence the output will be 1 1 2 4 5 1.<br><br></span></pre>
+<p><span style="font-size: 18px;"><strong>User Task:</strong><br>The task is to complete the function&nbsp;<strong>calculateSpan</strong>() which takes two parameters, an array<strong> price[] </strong>denoting the price of stocks, and an integer <strong>N </strong>denoting the size of the array and number of days. This function finds the span of stock's price for all N&nbsp;days and returns an array of length <strong>N</strong> denoting the span for the i-th day.</span></p>
+<p><span style="font-size: 18px;"><strong>Expected Time Complexity:&nbsp;</strong>O(N).<br><strong>Expected Auxiliary Space:&nbsp;</strong>O(N).</span></p>
+<p><span style="font-size: 18px;"><strong>Constraints:</strong><br>1 ≤ N ≤ 10<sup>5</sup><br>1 ≤ C[i] ≤ 10<sup>5</sup></span></p>
+<p><span style="font-size: 18px;"><img src="https://contribute.geeksforgeeks.org/wp-content/uploads/Stock_span.png" alt=""></span></p></div><p><span style=font-size:18px><strong>Company Tags : </strong><br><code>Flipkart</code>&nbsp;<code>Accolite</code>&nbsp;<code>Amazon</code>&nbsp;<code>Microsoft</code>&nbsp;<code>Samsung</code>&nbsp;<code>Adobe</code>&nbsp;<br><p><span style=font-size:18px><strong>Topic Tags : </strong><br><code>Arrays</code>&nbsp;<code>Stack</code>&nbsp;<code>Data Structures</code>&nbsp;
