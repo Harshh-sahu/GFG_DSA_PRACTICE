@@ -56,6 +56,7 @@ struct Node {
 };
 
 */
+
 class Solution{
     private:
     Node* reverseLinkedList(Node* head){
@@ -149,7 +150,6 @@ class Solution{
         return ans;
     }
 };
-
 
 
 //{ Driver Code Starts.
