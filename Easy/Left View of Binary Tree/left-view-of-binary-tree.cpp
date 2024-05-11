@@ -126,19 +126,24 @@ struct Node
     }
 };
  */
- 
- void func(Node* root,int level , vector<int>&store){
-     if(!root) return;
-     if(level == store.size())store.push_back(root->data);
-     func(root->left, level+1, store);
-    func(root->right, level+1, store);
- }
 
+ void left(Node* root,int level,vector<int>&leftview){
+    if(root == NULL){
+        return;
+    }
+    
+    if(level == leftview.size()){
+        leftview.push_back(root->data);
+    }
+    
+    
+    left(root->left,level+1,leftview);
+    left(root->right,level+1,leftview);
+}
 //Function to return a list containing elements of left view of the binary tree.
 vector<int> leftView(Node *root)
 {
-    vector<int>store;
-    func(root,0,store);
-    return store;
-    
+   vector<int>ans;
+   left(root,0,ans);
+   return ans;
 }
