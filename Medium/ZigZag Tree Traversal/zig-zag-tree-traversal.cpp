@@ -101,49 +101,37 @@ struct Node {
 */
 
 class Solution{
-    public:
-    //Function to store the zig zag order traversal of tree in a list.
-    vector <int> zigZagTraversal(Node* root)
-    {
-    	// Code here
-    	  vector<int> ans;
-        if(!root)
-        return ans;
-        deque<Node *>q;
-        q.push_back(root);
-        bool flag=0;
-        int size;
-        while(!q.empty())
-        {
-            size=q.size();
-            while(!flag && size--)
-            {
-                Node *temp=q.front();
-                q.pop_front();
-                ans.push_back(temp->data);
-                if(temp->left)
-                q.push_back(temp->left);
-                if(temp->right)
-                q.push_back(temp->right);
+public:
+    vector<int> zigZagTraversal(Node* root) {
+        vector<vector<int>> ans;
+        if (!root)
+            return {};
+        bool LtoRdir = true;
+        queue<Node*> q;
+        q.push(root);
+        while (!q.empty()) {
+            int width = q.size();
+            vector<int> onelevel(width);
+            for(int i = 0; i < width; i++) {
+                Node* front = q.front(); q.pop();
+                int index = LtoRdir ? i : width - i - 1;
+                onelevel[index] = front->data;
+                if (front->left) q.push(front->left);
+                if (front->right) q.push(front->right);
             }
-            
-            while(flag && size--)
-            {
-                Node *temp=q.back();
-                q.pop_back();
-                ans.push_back(temp->data);
-                if(temp->right)
-                q.push_front(temp->right);
-                if(temp->left)
-                q.push_front(temp->left);
-            }
-            
-            flag=!flag;
+            LtoRdir = !LtoRdir;
+            ans.push_back(onelevel);
         }
-        
-        return ans;
+
+        // Convert 2D vector 'ans' into a single vector
+        vector<int> result;
+        for (const auto& level : ans) {
+            result.insert(result.end(), level.begin(), level.end());
+        }
+        return result;
     }
 };
+
 
 //{ Driver Code Starts.
 
