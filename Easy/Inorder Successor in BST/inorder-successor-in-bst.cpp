@@ -109,22 +109,22 @@ struct Node {
 
 class Solution{
   public:
-    
-   void find(Node* root,Node* x,Node*&ans){
-        if(root == NULL)return;
-        
-        if(root->data > x->data){
-            ans = root;
-            find(root->left,x,ans);
-        }else{
-            find(root->right,x,ans);
-        }
-    }
+    // returns the inorder successor of the Node x in BST (rooted at 'root')
     Node * inOrderSuccessor(Node *root, Node *x)
     {
-       Node* ans = NULL;
-       find(root,x,ans);
-       return ans;
+        Node*succ = 0;
+        Node *curr = root;
+        while(curr){
+            if(curr->data > x->data){
+                succ = curr;
+                curr = curr->left;
+                
+            }
+            else{
+                curr=curr->right;
+            }
+        }
+        return succ;
     }
 };
 
