@@ -1,0 +1,9 @@
+<h2><a href="https://www.geeksforgeeks.org/problems/add-two-numbers-represented-by-two-arrays2408/0">Add two numbers represented by two arrays</a></h2><h3>Difficulty Level : Difficulty: Easy</h3><hr><div class="problems_problem_content__Xm_eO"><p><span style="font-size: 18px;">Given two arrays <strong>arr1</strong> and <strong>arr2</strong>, representing two numbers such that every element of arrays represents a digit. The task is to find the sum of both the numbers.</span></p>
+<p><span style="font-size: 18px;"><strong>Examples:</strong></span></p>
+<pre><span style="font-size: 18px;"><strong>Input :</strong> arr1[] = [1, 2], arr2[] = [2, 1]
+<strong>Output :</strong> 33
+<strong>Explanation: </strong>arr1[]=[1,2] number represented by first array is 12. arr2[] = [2, 1] number represented by second array is 21. Sum = 12 + 21 = 33.</span></pre>
+<pre><span style="font-size: 18px;"><strong>Input :</strong> arr1[] = [9, 5, 4, 9], arr2[] = [2, 1, 4] <strong>
+Output :</strong> 9763 <br><strong>Explanation :</strong> sum of 9549 and 214 is 9763. </span></pre>
+<p><span style="font-size: 18px;"><strong>Expected Time Complexity:</strong> O(n+m).<br><strong>Expected Auxiliary Space:</strong> O(1).</span></p>
+<p><span style="font-size: 18px;"><strong>Constraints:</strong><br>1 ≤ arr1.size() ≤ 10<sup>6</sup><br>1 ≤ arr2.size() ≤ </span><span style="font-size: 18px;">10</span><sup>6<br></sup><span style="font-size: 18px;">1 ≤ arr1[i], arr2[i] ≤ 9</span><sup><br></sup></p></div><br><p><span style=font-size:18px><strong>Topic Tags : </strong><br><code>Arrays</code>&nbsp;<code>Strings</code>&nbsp;<code>Data Structures</code>&nbsp;
