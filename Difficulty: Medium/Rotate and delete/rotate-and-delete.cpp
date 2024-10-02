@@ -7,50 +7,24 @@ using namespace std;
 
 class Solution {
   public:
-
-    // function to do operations of rotate and delete
-    // v: input vector
-    // n: size of vector
-    int rotateDelete(vector<int> ans, int n) {
- int k=0;
-
+    int rotateDelete(vector<int> &arr) {
+       int sz = arr.size() / 2;
         
-
-        for(int i  = 0;i<n-1;i++)
-
-        {
-
-            long long temp = ans.back();
-
-            ans.erase(ans.end()-1);
-
-            ans.insert(ans.begin(),temp);
-
-            k++;
-
-            if(ans.size() < k)
-
-            {
-
-                ans.erase(ans.begin());
-
-            }
-
-            else
-
-            {
-
-               ans.erase(ans.end()-k);
-
-            }
-
-           
-
+        for(int i=1; i<=sz && arr.size()!=1; i++){
+            
+            int n = arr.size();
+            
+            // Rotate array to right by one place
+            int x = arr[n - 1];
+            arr.insert(arr.begin(), x);
+            arr.erase(arr.end() - 1);
+            
+            // Delete the (n - i + 1)th element
+            arr.erase(arr.begin() + n - i);
+            
         }
-
-        return ans[0];
-
-
+        
+        return arr[0];
     }
 };
 
@@ -58,21 +32,25 @@ class Solution {
 //{ Driver Code Starts.
 
 int main() {
-
-    int i, n, t, te;
-    cin >> te;
-
-    while (te--) {
-        cin >> n;
-        vector<int> v;
-        for (i = 0; i < n; i++) {
-            cin >> t;
-            v.push_back(t);
+    string ts;
+    getline(cin, ts);
+    int t = stoi(ts);
+    while (t--) {
+        vector<int> arr;
+        string input;
+        getline(cin, input);
+        stringstream ss(input);
+        int number;
+        while (ss >> number) {
+            arr.push_back(number);
         }
-        Solution ob;
-        cout << ob.rotateDelete(v, n) << endl;
+        Solution obj;
+        int res = obj.rotateDelete(arr);
+        cout << res << endl;
+        // string tl;
+        // getline(cin, tl);
     }
-
     return 0;
 }
+
 // } Driver Code Ends
