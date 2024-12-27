@@ -11,21 +11,30 @@ class Solution {
     // Function returns the second
     // largest elements
     int getSecondLargest(vector<int> &arr) {
-int l=arr[0];
-        int sl=-1;
-        for(int i=1; i<arr.size();i++)
+        int n = arr.size();
+      if(n<2)
+	return -1;
+    int large=INT_MIN,second_large=INT_MIN;
+    int i;
+    for (i = 0; i < n; i++) 
+    {
+        if (arr[i] > large) 
         {
-            if(arr[i]>l)
-            {
-                sl=l;
-                l=arr[i];
-            }
-            else if(arr[i]<l && arr[i]>sl)
-            {
-                sl=arr[i];
-            }
+            second_large = large;
+            large = arr[i];
         }
-        return sl;    }
+ 
+        else if (arr[i] > second_large && arr[i] != large) 
+        {
+            second_large = arr[i];
+        }
+    }
+    int aa= INT_MIN;
+    if(second_large!= aa)
+    return second_large; 
+    
+    return -1;
+    }
 };
 
 //{ Driver Code Starts.
