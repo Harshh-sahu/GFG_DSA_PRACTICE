@@ -5,20 +5,17 @@ using namespace std;
 
 // } Driver Code Ends
 
-
 class Solution {
-    #include <numeric> // Include numeric for std::gcd
-
   public:
-  
     int gcd(int a, int b) {
- 
-   while(b!=0){
-       int temp = b;
-       b = a%b;
-       a = temp;
-   }
-   return a;
+      if(a==0) return b;
+      if(b==0) return a;
+      
+      while(a > 0 && b >0){
+          if(a>b)a= a-b;
+          else b = b-a;
+      }
+      return a==0 ? b:a;
     }
 };
 
@@ -42,7 +39,9 @@ int main(){
         
         cout<<res<<endl;
         
-    }
+    
+cout << "~" << "\n";
+}
 }
 
 // } Driver Code Ends
