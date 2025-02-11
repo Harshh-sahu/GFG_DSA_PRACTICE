@@ -19,22 +19,23 @@ struct Node {
 // } Driver Code Ends
 class Solution {
   public:
-   bool isvalid(Node* root, int a ,int b)
-    {
-        if(root==NULL)
-        return true;
-        
-        if(root->data <=a || root->data >=b)
-        return false;
-        
-        return isvalid(root->left,a,root->data) && isvalid(root->right,root->data,b);
+    // Function to check whether a Binary Tree is BST or not.
+   void solve(Node* root,vector<int>&ans){
+        if(root==NULL) return;
+        solve(root->left,ans);
+        ans.push_back(root->data);
+        solve(root->right,ans);
     }
     bool isBST(Node* root) {
         // Your code here
-        
-        
-        return isvalid(root,INT_MIN,INT_MAX);
+        vector<int>ans;
+        solve(root,ans);
+        for(int i=0;i<ans.size()-1;i++)
+            if(ans[i]>ans[i+1])
+                return false;
+        return true;
     }
+
 };
 
 
@@ -132,6 +133,7 @@ int main() {
 
         else
             cout << "false\n";
+        cout << "~" << endl;
     }
     return 0;
 }
