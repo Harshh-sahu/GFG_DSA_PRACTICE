@@ -20,21 +20,23 @@ struct Node {
 class Solution {
   public:
     // Function to check whether a Binary Tree is BST or not.
-   void solve(Node* root,vector<int>&ans){
-        if(root==NULL) return;
-        solve(root->left,ans);
-        ans.push_back(root->data);
-        solve(root->right,ans);
-    }
-    bool isBST(Node* root) {
-        // Your code here
-        vector<int>ans;
-        solve(root,ans);
-        for(int i=0;i<ans.size()-1;i++)
-            if(ans[i]>ans[i+1])
-                return false;
-        return true;
-    }
+bool isBSTUtil(Node* root, Node* &prev) {
+    if (!root) return true;
+
+    if (!isBSTUtil(root->left, prev)) return false;
+
+    if (prev && root->data <= prev->data) 
+        return false;
+    
+    prev = root;
+
+    return isBSTUtil(root->right, prev);
+}
+
+bool isBST(Node* root) {
+    Node* prev = nullptr;
+    return isBSTUtil(root, prev);
+}
 
 };
 
