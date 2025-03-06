@@ -7,64 +7,51 @@ using namespace std;
 class Solution {
   public:
   
-    void merge(vector<int>&arr,int start,int end){
-        int mid = (start+end)/2;
-        int len1 = mid-start+1;
-        int len2 = end-mid;
-        
-        int* left = new int[len1];
-        int* right = new int[len2];
-        int k = start;
-     for(int i = 0 ; i < len1;i++){
-         left[i] = arr[k++];
-     }
-     k = mid+1;
-      for(int i = 0 ; i < len2;i++){
-         right[i] = arr[k++];
-     }
-     
-    int leftIndex = 0;
-    int rightIndex = 0;
-    int mainIndex = start;
-    
-    
-    while(leftIndex < len1 && rightIndex < len2){
-        if(left[leftIndex]<right[rightIndex]){
-            arr[mainIndex++]= left[leftIndex++];
-        }else{
-            arr[mainIndex++]= right[rightIndex++];
+  
+
+void merge(vector<int> &arr, int low, int mid, int high) {
+    vector<int> temp; // temporary array
+    int left = low;      // starting index of left half of arr
+    int right = mid + 1;   // starting index of right half of arr
+
+    //storing elements in the temporary array in a sorted manner//
+
+    while (left <= mid && right <= high) {
+        if (arr[left] <= arr[right]) {
+            temp.push_back(arr[left]);
+            left++;
+        }
+        else {
+            temp.push_back(arr[right]);
+            right++;
         }
     }
-    
-    while(leftIndex<len1){
-                    arr[mainIndex++]= left[leftIndex++];
 
-    }
-    while(rightIndex<len2){
-                    arr[mainIndex++]= right[rightIndex++];
+    // if elements on the left half are still left //
 
+    while (left <= mid) {
+        temp.push_back(arr[left]);
+        left++;
     }
-     
-     delete[] left;
-     delete[] right;
-     
+
+    //  if elements on the right half are still left //
+    while (right <= high) {
+        temp.push_back(arr[right]);
+        right++;
     }
-  
-  
-    void mergeSort(vector<int>& arr, int start, int end) {
-          
-          if(start>= end)return;
-          
-          int mid = (start+end)/2;
-          
-          mergeSort(arr,start,mid);
-          
-          mergeSort(arr,mid+1,end);
-          
-          merge(arr,start,end);
-          
-          
+
+    // transfering all elements from temporary to arr //
+    for (int i = low; i <= high; i++) {
+        arr[i] = temp[i - low];
     }
+}
+  void mergeSort(vector<int> &arr, int low, int high) {
+    if (low >= high) return;
+    int mid = (low + high) / 2 ;
+    mergeSort(arr, low, mid);  // left half
+    mergeSort(arr, mid + 1, high); // right half
+    merge(arr, low, mid, high);  // merging sorted halves
+}
 };
 
 //{ Driver Code Starts.
