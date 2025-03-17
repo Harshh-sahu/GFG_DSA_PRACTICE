@@ -46,26 +46,38 @@ void loopHere(Node *head, Node *tail, int position) {
 */
 class Solution {
   public:
+  Node* getStartingPoint(Node* &head){
+      Node* slow = head;
+      Node* fast = head;
+      
+      while(fast != NULL){
+          fast = fast->next;
+          if(fast !=NULL){
+              fast = fast ->next;
+              slow = slow->next;
+              
+          }
+          if(fast == slow){
+              break;
+          }
+      }
+      if(fast ==NULL){
+         
+          return NULL;
+      }
+      
+      slow =head;
+      while(fast != slow){
+          slow = slow->next;
+          fast = fast->next;
+          
+      }
+      
+      return slow;
+      
+  }
     Node* findFirstNode(Node* head) {
-            if(!head->next) return false; 
-             if(!head->next->next) return false; 
-        Node* slow = head->next; 
-        Node* fast = slow->next; 
-        
-        while(fast&& fast->next){
-          slow = slow->next; 
-            fast =fast->next->next; 
-
-            if(slow==fast){
-                while(head!=fast){
-                    head = head->next; 
-                    fast = fast->next; 
-                }
-                return head; 
-            }
-        }
-        
-        return NULL; 
+         return getStartingPoint(head);  
     }
 };
 
