@@ -53,6 +53,7 @@ void printList(Node* n) {
 
 
 // } Driver Code Ends
+
 /* node for linked list:
 
 struct Node {
@@ -66,64 +67,57 @@ struct Node {
 
 */
 
+#include <stack>  
 
 class Solution {
-  public:
-    Node *reverse(Node *head)
-    {
-        Node *temp = head;
-        Node *nextnode=NULL,*prev=NULL;
-        
-        while(temp!=NULL)
-        {
-            nextnode = temp->next;
-            temp->next = prev;
-            prev = temp;
-            temp = nextnode;
+public:
+    Node* addTwoLists(Node* num1, Node* num2) {
+        std::stack<int> s1, s2;
+
+        // Push all digits of num1 into stack s1
+        while (num1 != NULL) {
+            s1.push(num1->data);
+            num1 = num1->next;
         }
-        
-        return prev;
-    }
-    Node* addTwoLists(Node* num1, Node* num2)
-    {
-        num1 = reverse(num1);
-        num2 = reverse(num2);
-        Node *num3 = new Node(-1);
-        Node *head = num3;
-        
-        int carry=0;
-        while(num1 || num2 || carry)
-        {
-            int sum=0;
-            if(num1){
-                sum+=num1->data;
-                num1 = num1->next;
-            }
-            
-            if(num2){
-                sum+=num2->data;
-                num2 = num2->next;
-            }
-            
-            sum += carry;
-            carry = sum/10;
-            
-            if(num1==NULL&&num2==NULL&& sum==0 &&carry==0){
-                break;
-            }
-            Node *newnode = new Node(sum%10);
-            num3->next = newnode;
-            num3 = newnode;
+
+        // Push all digits of num2 into stack s2
+        while (num2 != NULL) {
+            s2.push(num2->data);
+            num2 = num2->next;
         }
-        if(carry)
-        {
-            num3->data += carry;
+
+        Node* head = NULL;  // Final result list
+        int carry = 0;
+
+        // Process both stacks and the carry
+        while (!s1.empty() || !s2.empty() || carry) {
+            int sum = carry;
+            if (!s1.empty()) {
+                sum += s1.top();
+                s1.pop();
+            }
+            if (!s2.empty()) {
+                sum += s2.top();
+                s2.pop();
+            }
+
+            carry = sum / 10;
+            int digit = sum % 10;
+
+            // Insert new node at the head (Most significant digit first)
+            Node* newNode = new Node(digit);
+            newNode->next = head;
+            head = newNode;
         }
-        head = reverse(head->next);
+
+        
+        while(head->data==0)
+        {
+            head=head->next;
+        }
         return head;
     }
 };
-
 
 
 
