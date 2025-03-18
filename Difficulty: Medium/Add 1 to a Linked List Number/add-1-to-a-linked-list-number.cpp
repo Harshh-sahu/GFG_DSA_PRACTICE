@@ -24,6 +24,7 @@ void printList(Node* node) {
 
 
 // } Driver Code Ends
+
 // User function template for C++
 
 /*
@@ -43,35 +44,55 @@ struct Node
 
 class Solution {
   public:
-      Node* reverse(Node* head){
-           Node* prev = nullptr;
-           Node* curr = head;
-           while(curr != nullptr){
-                Node* nextNode = curr->next;
-            curr->next = prev;
-            prev = curr;
-            curr = nextNode;
-           }
-           return prev;
+  Node* reverse(Node* &head){
+      Node* prev = NULL;
+      Node* curr = head;
+      
+      while(curr != NULL){
+          Node* next = curr->next;
+          curr->next = prev;
+          prev = curr;
+          curr = next;
       }
-    Node* addOne(Node* head) {
-     head =reverse(head);
-     
-     Node* temp = head;
-     int carry = 1;
-     while(temp != nullptr){
-           int sum = temp->data + carry;
-            carry = sum / 10;  // carry for the next node
-            temp->data = sum % 10;  // update the current node with the new digit
-            if (temp->next == nullptr && carry > 0) {
-                temp->next = new Node(carry);  // add a new node if carry is left
-                break;
-     }
-     temp = temp->next;
-    }
-    head  = reverse(head);
-    return head;}
+      return prev;
+  }
+   Node* addOne(Node* head){
+       //reverse
+       head = reverse(head);
+       
+       //add1 
+       int carry = 1;
+       Node* temp = head;
+       while(temp->next != NULL){
+           int totalSum = temp->data+carry;
+           int digit = totalSum %10;
+           carry = totalSum/10;
+           temp->data = digit;
+           
+           temp = temp->next;
+           if(carry ==0) break;
+           
+       }
+    
+       
+  if(carry != 0){
+      int totalSum = temp->data + carry;
+      int digit = totalSum %10;
+      carry = totalSum /10;
+      
+      temp->data = digit;
+      if(carry != 0){
+          Node* newNode = new Node(carry);
+          temp->next = newNode;
+      }
+  }
+       
+       //reverse
+       return reverse(head);
+   }
+ 
 };
+
 
 //{ Driver Code Starts.
 
@@ -105,6 +126,7 @@ int main() {
         Solution ob;
         head = ob.addOne(head);
         printList(head);
+        cout << "~" << endl;
     }
     return 0;
 }
