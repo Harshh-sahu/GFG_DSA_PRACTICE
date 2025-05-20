@@ -100,6 +100,7 @@ void inorder(Node* root) {
 
 
 // } Driver Code Ends
+
 /* Structure for tree and linked list
 
 struct Node
@@ -118,27 +119,29 @@ struct Node
 // This function should return head to the DLL
 class Solution {
   public:
-    vector<Node*>v;
-    void inorder(Node* root){
-        if(root==NULL) return ;
-        inorder(root->left);
-        //cout<<root->data<<endl;
-        v.push_back(root);
-        inorder(root->right);
-    }
+  void convert(Node* root,Node* &head){
+      if(root == nullptr)return ;
+      
+     convert(root->right,head);
+ root->right = head;
+    if(head!= NULL)
+    head->left = root;
+
+    head = root;
+    convert(root->left,head);
+
+      
+  }
     Node* bToDLL(Node* root) {
-        inorder(root);
-       Node* head=v[0];
-       head->left=NULL;
-       Node* h=head;
-       for(int i=1;i<v.size();i++){
-          v[i]->left=head;
-          head->right=v[i];
-          head=head->right;
-       }
-       return h;
-    } 
+        // code here
+        Node* head = NULL;
+     convert(root,head);
+     
+     return head;
+        
+    }
 };
+
 
 //{ Driver Code Starts.
 
@@ -156,6 +159,9 @@ int main() {
         Solution ob;
         Node* head = ob.bToDLL(root);
         printList(head);
+
+        cout << "~"
+             << "\n";
     }
     return 0;
 }
